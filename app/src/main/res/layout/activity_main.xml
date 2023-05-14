@@ -1,0 +1,74 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".MainActivity">
+
+    <ImageView
+        android:id="@+id/main_background"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:scaleType="centerCrop"
+        android:src="@drawable/main_backgroundsecondversion" />
+
+    <Button
+        android:id="@+id/button_start"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_weight="1"
+        android:background="@drawable/button_stroke_black80_press_white"
+        android:layout_centerVertical="false"
+        android:layout_marginTop="500dp"
+        android:layout_centerHorizontal="true"
+        android:text="@string/start"
+        android:textColor="@color/black95"
+        android:paddingRight="13dp"
+        android:paddingLeft="13dp"
+        android:textSize="20sp" />
+
+    <Button
+        android:id="@+id/button_continue"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_weight="1"
+        android:background="@drawable/button_stroke_black80_press_white"
+        android:layout_centerVertical="false"
+        android:layout_marginTop="560dp"
+        android:layout_centerHorizontal="true"
+        android:text="@string/game_continue"
+        android:textColor="@color/black95"
+        android:paddingRight="13dp"
+        android:paddingLeft="13dp"
+        android:textSize="20sp" />
+
+    <Button
+        android:id="@+id/button_newgame"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_weight="1"
+        android:background="@drawable/button_stroke_black80_press_white"
+        android:layout_centerVertical="false"
+        android:layout_marginTop="620dp"
+        android:layout_centerHorizontal="true"
+        android:text="@string/new_game"
+        android:textColor="@color/black95"
+        android:paddingRight="13dp"
+        android:paddingLeft="13dp"
+        android:textSize="20sp" />
+
+    <TextView
+        android:id="@+id/name_of_the_game_main_background"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="@string/app_name"
+        android:visibility="visible"
+        android:textStyle="bold"
+        android:textColor="@color/brightGreen"
+        android:textSize="31sp"
+        android:layout_centerVertical="false"
+        android:layout_centerHorizontal="true"
+        android:layout_marginTop="255dp"/>
+
+</RelativeLayout>

@@ -1,0 +1,9 @@
+<resources>
+    <string name="app_name">Make Tomorrow Better</string>
+    <string name="start">Играть</string>
+    <string name="back">Назад</string>
+    <string name="stakan_vodi">Выпить стакан воды</string>
+    <string name="game_continue">Продолжить игру</string>
+    <string name="new_game">Начать заново</string>
+    <string name="game_end">Завершить игру</string>
+</resources>

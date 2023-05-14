@@ -1,0 +1,479 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:orientation="vertical" android:layout_width="match_parent"
+    android:layout_height="match_parent">
+
+    <TextView
+        android:id="@+id/textfield"
+        android:layout_height="50dp"
+        android:layout_width="50dp"
+        android:textSize="10dp"
+        />
+
+    <ImageView
+        android:id="@id/main_background"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:scaleType="centerCrop"
+        android:src="@drawable/the_main_background" />
+
+    <ImageView
+        android:id="@+id/Tree1"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_centerHorizontal="true"
+        android:layout_marginBottom="76dp"
+        android:layout_alignParentBottom="true"
+        app:srcCompat="@drawable/tree1" />
+
+    <ImageView
+        android:id="@+id/Tree2"
+        android:layout_width="206dp"
+        android:layout_height="187dp"
+        android:layout_alignParentBottom="true"
+        android:layout_centerHorizontal="true"
+        android:layout_marginBottom="60dp"
+        app:srcCompat="@drawable/tree2" />
+
+    <ImageView
+        android:id="@+id/Tree3"
+        android:layout_width="346dp"
+        android:layout_height="468dp"
+        android:layout_alignParentBottom="true"
+        android:layout_centerHorizontal="true"
+        android:layout_marginBottom="15dp"
+        app:srcCompat="@drawable/tree3" />
+
+    <ImageView
+        android:id="@+id/Tree4"
+        android:layout_width="283dp"
+        android:layout_height="599dp"
+        android:layout_alignParentBottom="true"
+        android:layout_centerHorizontal="true"
+        android:paddingTop="70dp"
+        app:srcCompat="@drawable/tree4" />
+
+    <ImageView
+        android:id="@+id/Tree5"
+        android:layout_width="410dp"
+        android:layout_height="match_parent"
+        android:layout_alignParentBottom="true"
+        android:layout_centerHorizontal="true"
+        android:layout_marginBottom="0dp"
+        android:paddingTop="235dp"
+        app:srcCompat="@drawable/tree5" />
+
+    <ImageView
+        android:id="@+id/Tree6"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentBottom="true"
+        android:layout_centerHorizontal="true"
+        android:layout_marginBottom="0dp"
+        android:paddingTop="170dp"
+        app:srcCompat="@drawable/tree6" />
+
+    <ImageView
+        android:id="@+id/Tree7"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentBottom="true"
+        android:layout_centerHorizontal="true"
+        android:layout_marginBottom="0dp"
+        android:paddingTop="170dp"
+        app:srcCompat="@drawable/tree7" />
+
+    <ImageView
+        android:id="@+id/Tree8"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentBottom="true"
+        android:layout_centerHorizontal="true"
+        android:layout_marginBottom="0dp"
+        android:paddingTop="170dp"
+        app:srcCompat="@drawable/tree8" />
+
+    <ImageView
+        android:id="@+id/Flower"
+        android:layout_width="62dp"
+        android:layout_height="113dp"
+        android:layout_marginLeft="30dp"
+        android:layout_marginTop="637dp"
+        android:paddingLeft="5dp"
+        app:srcCompat="@drawable/flower" />
+
+    <Button
+        android:id="@+id/button_back"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:background="@drawable/button_stroke_gray_press_white"
+        android:text="@string/back"
+        android:textAllCaps="true"
+        android:textColor="@color/black95"
+        android:textStyle="bold"
+        android:layout_marginTop="8dp"
+        android:layout_marginLeft="8dp"
+        android:paddingRight="2dp"
+        android:paddingLeft="2dp"
+        android:textSize="16sp"
+        />
+
+    <Button
+        android:id="@+id/button_end"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:background="@drawable/button_stroke_gray_press_white"
+        android:text="@string/game_end"
+        android:textAllCaps="true"
+        android:textColor="@color/black95"
+        android:textStyle="bold"
+        android:layout_marginTop="8dp"
+        android:layout_marginLeft="8dp"
+        android:paddingRight="7dp"
+        android:paddingLeft="5dp"
+        android:textSize="16sp"
+        />
+
+    <CheckedTextView
+        android:id="@+id/checked_textview"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginLeft="150dp"
+        android:layout_marginTop="15dp"
+        android:layout_marginRight="18dp"
+        android:checkMark="?android:attr/listChoiceIndicatorMultiple"
+        android:checked="false"
+        android:textSize="20sp"
+        android:background="@color/blue"
+        android:textColor="@color/white"
+        android:text="@string/stakan_vodi"
+        android:paddingLeft="15dp"
+        android:paddingRight="8dp"
+        android:paddingTop="12dp"
+        android:paddingBottom="12dp"
+        android:textStyle="bold">
+    </CheckedTextView>
+
+    <ImageView
+        android:id="@+id/WelcomeText"
+        android:layout_centerHorizontal="true"
+        android:layout_centerVertical="true"
+        android:layout_width="340dp"
+        android:layout_height="340dp"
+        app:srcCompat="@drawable/text_start_page" />
+
+
+    <ImageView
+        android:id="@+id/Tree_Growing_Up_First_Stage"
+        android:layout_centerHorizontal="true"
+        android:layout_centerVertical="true"
+        android:layout_width="335dp"
+        android:layout_height="335dp"
+        app:srcCompat="@drawable/tree_growing_up_first_stage" />
+
+    <ImageView
+        android:id="@+id/Tree_Growing_Up_Second_Stage"
+        android:layout_centerHorizontal="true"
+        android:layout_centerVertical="true"
+        android:layout_width="340dp"
+        android:layout_height="340dp"
+        app:srcCompat="@drawable/tree_growing_up_second_stage" />
+
+    <ImageView
+        android:id="@+id/Task_Water"
+        android:layout_centerHorizontal="true"
+        android:layout_centerVertical="true"
+        android:layout_width="340dp"
+        android:layout_height="340dp"
+        app:srcCompat="@drawable/task_water" />
+
+    <ImageView
+        android:id="@+id/MusicFlower"
+        android:layout_centerHorizontal="true"
+        android:layout_centerVertical="true"
+        android:layout_width="340dp"
+        android:layout_height="340dp"
+        app:srcCompat="@drawable/flowermusic" />
+
+    <ImageView
+        android:id="@+id/TakDerjat"
+        android:layout_centerHorizontal="true"
+        android:layout_centerVertical="true"
+        android:layout_width="340dp"
+        android:layout_height="340dp"
+        app:srcCompat="@drawable/takderjat" />
+
+    <ImageView
+        android:id="@+id/SportActivity"
+        android:layout_centerHorizontal="true"
+        android:layout_centerVertical="true"
+        android:layout_width="340dp"
+        android:layout_height="340dp"
+        app:srcCompat="@drawable/sport" />
+
+    <ImageView
+        android:id="@+id/Food"
+        android:layout_centerHorizontal="true"
+        android:layout_centerVertical="true"
+        android:layout_width="340dp"
+        android:layout_height="340dp"
+        app:srcCompat="@drawable/food" />
+
+    <ImageView
+        android:id="@+id/Walk"
+        android:layout_centerHorizontal="true"
+        android:layout_centerVertical="true"
+        android:layout_width="340dp"
+        android:layout_height="340dp"
+        app:srcCompat="@drawable/walk" />
+
+    <ImageView
+        android:id="@+id/BookReading"
+        android:layout_centerHorizontal="true"
+        android:layout_centerVertical="true"
+        android:layout_width="340dp"
+        android:layout_height="340dp"
+        app:srcCompat="@drawable/bookreading" />
+
+    <ImageView
+        android:id="@+id/FilmWatching"
+        android:layout_centerHorizontal="true"
+        android:layout_centerVertical="true"
+        android:layout_width="340dp"
+        android:layout_height="340dp"
+        app:srcCompat="@drawable/filmendorfin" />
+
+    <ImageView
+        android:id="@+id/EkomonitVodu"
+        android:layout_centerHorizontal="true"
+        android:layout_centerVertical="true"
+        android:layout_width="340dp"
+        android:layout_height="340dp"
+        app:srcCompat="@drawable/ekonomitvodu" />
+
+    <ImageView
+        android:id="@+id/Dance"
+        android:layout_centerHorizontal="true"
+        android:layout_centerVertical="true"
+        android:layout_width="340dp"
+        android:layout_height="340dp"
+        app:srcCompat="@drawable/dancing" />
+
+    <ImageView
+        android:id="@+id/Otdix"
+        android:layout_centerHorizontal="true"
+        android:layout_centerVertical="true"
+        android:layout_width="340dp"
+        android:layout_height="340dp"
+        app:srcCompat="@drawable/otdix" />
+
+    <ImageView
+        android:id="@+id/BiggestFlower"
+        android:layout_centerHorizontal="true"
+        android:layout_centerVertical="true"
+        android:layout_width="340dp"
+        android:layout_height="340dp"
+        app:srcCompat="@drawable/samibolshoizvetok" />
+
+    <ImageView
+        android:id="@+id/Tea"
+        android:layout_centerHorizontal="true"
+        android:layout_centerVertical="true"
+        android:layout_width="340dp"
+        android:layout_height="340dp"
+        app:srcCompat="@drawable/tea" />
+
+    <ImageView
+        android:id="@+id/Yoga"
+        android:layout_centerHorizontal="true"
+        android:layout_centerVertical="true"
+        android:layout_width="340dp"
+        android:layout_height="340dp"
+        app:srcCompat="@drawable/yoga" />
+
+    <ImageView
+        android:id="@+id/Garbage"
+        android:layout_centerHorizontal="true"
+        android:layout_centerVertical="true"
+        android:layout_width="340dp"
+        android:layout_height="340dp"
+        app:srcCompat="@drawable/garbage" />
+
+    <ImageView
+        android:id="@+id/Sing"
+        android:layout_centerHorizontal="true"
+        android:layout_centerVertical="true"
+        android:layout_width="340dp"
+        android:layout_height="340dp"
+        app:srcCompat="@drawable/singing" />
+
+    <ImageView
+        android:id="@+id/MorningTraining"
+        android:layout_centerHorizontal="true"
+        android:layout_centerVertical="true"
+        android:layout_width="340dp"
+        android:layout_height="340dp"
+        app:srcCompat="@drawable/morningtraining" />
+
+    <ImageView
+        android:id="@+id/Fact_Dreaming"
+        android:layout_centerHorizontal="true"
+        android:layout_centerVertical="true"
+        android:layout_width="340dp"
+        android:layout_height="340dp"
+        app:srcCompat="@drawable/fact_dreaming" />
+
+    <ImageView
+        android:id="@+id/Communication"
+        android:layout_centerHorizontal="true"
+        android:layout_centerVertical="true"
+        android:layout_width="340dp"
+        android:layout_height="340dp"
+        app:srcCompat="@drawable/communication" />
+
+    <ImageView
+        android:id="@+id/UborkaVKomnate"
+        android:layout_centerHorizontal="true"
+        android:layout_centerVertical="true"
+        android:layout_width="340dp"
+        android:layout_height="340dp"
+        app:srcCompat="@drawable/uborkavkomnate" />
+
+    <ImageView
+        android:id="@+id/Meditation"
+        android:layout_centerHorizontal="true"
+        android:layout_centerVertical="true"
+        android:layout_width="340dp"
+        android:layout_height="340dp"
+        app:srcCompat="@drawable/meditation" />
+
+    <ImageView
+        android:id="@+id/Goal"
+        android:layout_centerHorizontal="true"
+        android:layout_centerVertical="true"
+        android:layout_width="340dp"
+        android:layout_height="340dp"
+        app:srcCompat="@drawable/goal" />
+
+    <ImageView
+        android:id="@+id/Xorosho"
+        android:layout_centerHorizontal="true"
+        android:layout_centerVertical="true"
+        android:layout_width="340dp"
+        android:layout_height="340dp"
+        app:srcCompat="@drawable/xorosho" />
+
+    <ImageView
+        android:id="@+id/SuperKartinka"
+        android:layout_centerHorizontal="true"
+        android:layout_centerVertical="true"
+        android:layout_width="340dp"
+        android:layout_height="340dp"
+        app:srcCompat="@drawable/superkartinka" />
+
+    <ImageView
+        android:id="@+id/HalfWay"
+        android:layout_centerHorizontal="true"
+        android:layout_centerVertical="true"
+        android:layout_width="340dp"
+        android:layout_height="340dp"
+        app:srcCompat="@drawable/polovinaputijpg" />
+
+    <ImageView
+        android:id="@+id/Otlichno"
+        android:layout_centerHorizontal="true"
+        android:layout_centerVertical="true"
+        android:layout_width="340dp"
+        android:layout_height="340dp"
+        app:srcCompat="@drawable/otlichno" />
+
+    <ImageView
+        android:id="@+id/SuperPuperKartinka"
+        android:layout_centerHorizontal="true"
+        android:layout_centerVertical="true"
+        android:layout_width="340dp"
+        android:layout_height="340dp"
+        app:srcCompat="@drawable/superpuper" />
+
+    <ImageView
+        android:id="@+id/VperedTolko"
+        android:layout_centerHorizontal="true"
+        android:layout_centerVertical="true"
+        android:layout_width="340dp"
+        android:layout_height="340dp"
+        app:srcCompat="@drawable/tolkovpered" />
+
+    <ImageView
+        android:id="@+id/ThreeTasks"
+        android:layout_centerHorizontal="true"
+        android:layout_centerVertical="true"
+        android:layout_width="340dp"
+        android:layout_height="340dp"
+        app:srcCompat="@drawable/threetasks" />
+
+    <ImageView
+        android:id="@+id/Thank_you_1"
+        android:layout_centerHorizontal="true"
+        android:layout_centerVertical="true"
+        android:layout_width="340dp"
+        android:layout_height="340dp"
+        app:srcCompat="@drawable/thank_you_1" />
+
+    <ImageView
+        android:id="@+id/Thank_you_2"
+        android:layout_centerHorizontal="true"
+        android:layout_centerVertical="true"
+        android:layout_width="340dp"
+        android:layout_height="340dp"
+        app:srcCompat="@drawable/thank_you_2" />
+
+    <ImageView
+        android:id="@+id/Thank_you_3"
+        android:layout_centerHorizontal="true"
+        android:layout_centerVertical="true"
+        android:layout_width="340dp"
+        android:layout_height="340dp"
+        app:srcCompat="@drawable/thank_you_3" />
+
+    <ImageView
+        android:id="@+id/Thank_you_4"
+        android:layout_centerHorizontal="true"
+        android:layout_centerVertical="true"
+        android:layout_width="340dp"
+        android:layout_height="340dp"
+        app:srcCompat="@drawable/thank_you_4" />
+
+    <ImageView
+        android:id="@+id/Thank_you_5"
+        android:layout_centerHorizontal="true"
+        android:layout_centerVertical="true"
+        android:layout_width="340dp"
+        android:layout_height="340dp"
+        app:srcCompat="@drawable/thank_you_5" />
+
+    <ImageView
+        android:id="@+id/GoodJob"
+        android:layout_centerHorizontal="true"
+        android:layout_centerVertical="true"
+        android:layout_width="340dp"
+        android:layout_height="340dp"
+        app:srcCompat="@drawable/gj" />
+
+    <ImageView
+        android:id="@+id/DontGiveUp"
+        android:layout_centerHorizontal="true"
+        android:layout_centerVertical="true"
+        android:layout_width="340dp"
+        android:layout_height="340dp"
+        app:srcCompat="@drawable/dontgiveup" />
+
+    <ImageView
+        android:id="@+id/DerevoViroslo"
+        android:layout_centerHorizontal="true"
+        android:layout_centerVertical="true"
+        android:layout_width="340dp"
+        android:layout_height="340dp"
+        app:srcCompat="@drawable/derevoviroslo" />
+
+</RelativeLayout>
