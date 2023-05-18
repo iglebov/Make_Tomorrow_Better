@@ -9,7 +9,6 @@ import android.view.Window;
 import android.view.WindowManager;
 import android.widget.Button;
 import android.widget.CheckedTextView;
-import android.widget.ImageSwitcher;
 import android.widget.ImageView;
 
 import androidx.appcompat.app.AppCompatActivity;
@@ -28,7 +27,7 @@ public class FifthStageActivity extends AppCompatActivity {
         SharedPreferences save = getSharedPreferences("Save", MODE_PRIVATE);
         SharedPreferences.Editor editor = save.edit();
         editor.putInt("Level", 4);
-        editor.commit();
+        editor.apply();
 
         // Save(end)
 
@@ -156,7 +155,7 @@ public class FifthStageActivity extends AppCompatActivity {
         checkedTextView.setOnClickListener(new View.OnClickListener(){
             private int a = 0;
             private int n = 0;
-            private String[] seasons = {"Вынести мусор из дома на мусорку", "Попеть", "Сделать утреннюю зарядку"};
+            private final String[] seasons = {"Вынести мусор из дома на мусорку", "Попеть", "Сделать утреннюю зарядку"};
             @Override
             public void onClick(View v) {
                 checkedTextView.toggle();
@@ -166,89 +165,68 @@ public class FifthStageActivity extends AppCompatActivity {
                     checkedTextView.setText(seasons[n]);
                     n++;
                     a++;
-                    if (a == 1){
-                        TolkoVpered.setVisibility(View.VISIBLE);
-                        new Handler().postDelayed(new Runnable() {
-                            @Override
-                            public void run() {
+                    switch(a) {
+                        case 1:
+                            TolkoVpered.setVisibility(View.VISIBLE);
+                            new Handler().postDelayed(() -> {
                                 TolkoVpered.setVisibility(View.INVISIBLE);
                                 Yoga.setVisibility(View.VISIBLE);
-                            }
-                        },2 * 1000);
-                        new Handler().postDelayed(new Runnable() {
-                            @Override
-                            public void run() {
+                            },2 * 1000);
+                            new Handler().postDelayed(() -> {
                                 Yoga.setVisibility(View.INVISIBLE);
                                 checkedTextView.setVisibility(View.VISIBLE);
-                            }
-                        },7 * 1000);
-                    }
-                    if (a == 2){
-                        Garbage.setVisibility(View.VISIBLE);
-                        new Handler().postDelayed(new Runnable() {
-                            @Override
-                            public void run() {
+                            },7 * 1000);
+                            break;
+                        case 2:
+                            Garbage.setVisibility(View.VISIBLE);
+                            new Handler().postDelayed(() -> {
                                 Garbage.setVisibility(View.INVISIBLE);
                                 checkedTextView.setVisibility(View.VISIBLE);
-                            }
-                        },7 * 1000);
-                    }
-                    if (a == 3){
-                        Singing.setVisibility(View.VISIBLE);
-                        new Handler().postDelayed(new Runnable() {
-                            @Override
-                            public void run() {
+                            },7 * 1000);
+                            break;
+                        case 3:
+                            Singing.setVisibility(View.VISIBLE);
+                            new Handler().postDelayed(() -> {
                                 Singing.setVisibility(View.INVISIBLE);
                                 Tree_Growing_Up_First_Stage.setVisibility(View.VISIBLE);
-                                new Handler().postDelayed(new Runnable() {
-                                    @Override
-                                    public void run() {
-                                        Tree_Growing_Up_First_Stage.setVisibility(View.INVISIBLE);
-                                        checkedTextView.setVisibility(View.VISIBLE);
-                                        try{
-                                            Intent intent = new Intent(FifthStageActivity.this, SixthStageActivity.class);
-                                            startActivity(intent);finish();
-                                            overridePendingTransition(0,0);
-                                        }catch (Exception e){
-
-                                        }
+                                new Handler().postDelayed(() -> {
+                                    Tree_Growing_Up_First_Stage.setVisibility(View.INVISIBLE);
+                                    checkedTextView.setVisibility(View.VISIBLE);
+                                    try{
+                                        Intent intent = new Intent(FifthStageActivity.this, SixthStageActivity.class);
+                                        startActivity(intent);finish();
+                                        overridePendingTransition(0,0);
+                                    } catch (Exception e) {
+                                        // Empty
                                     }
                                 },2 * 1000);
-                            }
-                        },5 * 1000);
-                        Tree5.setVisibility(View.INVISIBLE);
-                        Tree6.setVisibility(View.VISIBLE);
-                        Flower.setVisibility(View.VISIBLE);
+                            },5 * 1000);
+                            Tree5.setVisibility(View.INVISIBLE);
+                            Tree6.setVisibility(View.VISIBLE);
+                            Flower.setVisibility(View.VISIBLE);
+                            break;
                     }
                 }
             }
-
         });
         Button button_back = (Button)findViewById(R.id.button_back);
-        button_back.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-
-                try{
-                    Intent intent = new Intent(FifthStageActivity.this, MainActivity.class);
-                    startActivity(intent);finish();
-                    overridePendingTransition(0,0);
-                }catch (Exception e){
-
-                }
+        button_back.setOnClickListener(v -> {
+            try {
+                Intent intent = new Intent(FifthStageActivity.this, MainActivity.class);
+                startActivity(intent);finish();
+                overridePendingTransition(0,0);
+            } catch (Exception e) {
+                // Empty
             }
         });
-
     }
-    //Системная кнопка - начало
     @Override
     public void onBackPressed(){
-        try{
+        try {
             Intent intent = new Intent(FifthStageActivity.this, MainActivity.class);
             startActivity(intent);finish();
-        }catch (Exception e){
-
+        } catch (Exception e) {
+            // Empty
         }
-        //Системная кнопка - конец
     }
 }

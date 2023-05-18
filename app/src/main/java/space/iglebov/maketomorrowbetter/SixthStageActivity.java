@@ -2,7 +2,6 @@ package space.iglebov.maketomorrowbetter;
 
 import android.content.Intent;
 import android.content.SharedPreferences;
-import android.media.Image;
 import android.os.Bundle;
 import android.os.Handler;
 import android.view.View;
@@ -10,7 +9,6 @@ import android.view.Window;
 import android.view.WindowManager;
 import android.widget.Button;
 import android.widget.CheckedTextView;
-import android.widget.ImageSwitcher;
 import android.widget.ImageView;
 
 import androidx.appcompat.app.AppCompatActivity;
@@ -29,7 +27,7 @@ public class SixthStageActivity extends AppCompatActivity {
         SharedPreferences save = getSharedPreferences("Save", MODE_PRIVATE);
         SharedPreferences.Editor editor = save.edit();
         editor.putInt("Level", 5);
-        editor.commit();
+        editor.apply();
 
         // Save(end)
 
@@ -158,7 +156,7 @@ public class SixthStageActivity extends AppCompatActivity {
         checkedTextView.setOnClickListener(new View.OnClickListener(){
             private int a = 0;
             private int n = 0;
-            private String[] seasons = {"Убраться в комнате", "Помечтать", "Познакомиться с кем-нибудь"};
+            private final String[] seasons = {"Убраться в комнате", "Помечтать", "Познакомиться с кем-нибудь"};
             @Override
             public void onClick(View v) {
                 checkedTextView.toggle();
@@ -168,88 +166,65 @@ public class SixthStageActivity extends AppCompatActivity {
                     checkedTextView.setText(seasons[n]);
                     n++;
                     a++;
-                    if (a == 1){
-                        DerjatTak.setVisibility(View.VISIBLE);
-                        new Handler().postDelayed(new Runnable() {
-                            @Override
-                            public void run() {
-                                DerjatTak.setVisibility(View.INVISIBLE);
-                            }
-                        },2 * 1000);
-                        MorningTraining.setVisibility(View.VISIBLE);
-                        new Handler().postDelayed(new Runnable() {
-                            @Override
-                            public void run() {
+                    switch(a) {
+                        case 1:
+                            DerjatTak.setVisibility(View.VISIBLE);
+                            new Handler().postDelayed(() -> DerjatTak.setVisibility(View.INVISIBLE),2 * 1000);
+                            MorningTraining.setVisibility(View.VISIBLE);
+                            new Handler().postDelayed(() -> {
                                 MorningTraining.setVisibility(View.INVISIBLE);
                                 checkedTextView.setVisibility(View.VISIBLE);
-                            }
-                        },7 * 1000);
-                    }
-                    if (a == 2){
-                        UborkaVKomnate.setVisibility(View.VISIBLE);
-                        new Handler().postDelayed(new Runnable() {
-                            @Override
-                            public void run() {
+                            },7 * 1000);
+                            break;
+                        case 2:
+                            UborkaVKomnate.setVisibility(View.VISIBLE);
+                            new Handler().postDelayed(() -> {
                                 UborkaVKomnate.setVisibility(View.INVISIBLE);
                                 checkedTextView.setVisibility(View.VISIBLE);
-                            }
-                        },7 * 1000);
-                    }
-                    if (a == 3){
-                        Fact_Dreaming.setVisibility(View.VISIBLE);
-                        new Handler().postDelayed(new Runnable() {
-                            @Override
-                            public void run() {
+                            },7 * 1000);
+                            break;
+                        case 3:
+                            Fact_Dreaming.setVisibility(View.VISIBLE);
+                            new Handler().postDelayed(() -> {
                                 Fact_Dreaming.setVisibility(View.INVISIBLE);
                                 Tree_Growing_Up_First_Stage.setVisibility(View.VISIBLE);
-                                new Handler().postDelayed(new Runnable() {
-                                    @Override
-                                    public void run() {
-                                        Tree_Growing_Up_First_Stage.setVisibility(View.INVISIBLE);
-                                        checkedTextView.setVisibility(View.VISIBLE);
-                                        try{
-                                            Intent intent = new Intent(SixthStageActivity.this, SeventhStageActivity.class);
-                                            startActivity(intent);finish();
-                                            overridePendingTransition(0,0);
-                                        }catch (Exception e){
-
-                                        }
+                                new Handler().postDelayed(() -> {
+                                    Tree_Growing_Up_First_Stage.setVisibility(View.INVISIBLE);
+                                    checkedTextView.setVisibility(View.VISIBLE);
+                                    try {
+                                        Intent intent = new Intent(SixthStageActivity.this, SeventhStageActivity.class);
+                                        startActivity(intent);finish();
+                                        overridePendingTransition(0,0);
+                                    } catch (Exception e) {
+                                        // Empty
                                     }
                                 },2 * 1000);
-                            }
-                        },6 * 1000);
-                        Tree6.setVisibility(View.INVISIBLE);
-                        Tree7.setVisibility(View.VISIBLE);
+                            },6 * 1000);
+                            Tree6.setVisibility(View.INVISIBLE);
+                            Tree7.setVisibility(View.VISIBLE);
+                            break;
                     }
                 }
             }
-
         });
         Button button_back = (Button)findViewById(R.id.button_back);
-        button_back.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-
-                try{
-                    Intent intent = new Intent(SixthStageActivity.this, MainActivity.class);
-                    startActivity(intent);finish();
-                    overridePendingTransition(0,0);
-                }catch (Exception e){
-
-                }
+        button_back.setOnClickListener(v -> {
+            try {
+                Intent intent = new Intent(SixthStageActivity.this, MainActivity.class);
+                startActivity(intent);finish();
+                overridePendingTransition(0,0);
+            } catch (Exception e) {
+                // Empty
             }
         });
-
     }
-    //Системная кнопка - начало
     @Override
     public void onBackPressed(){
-        try{
+        try {
             Intent intent = new Intent(SixthStageActivity.this, MainActivity.class);
             startActivity(intent);finish();
-        }catch (Exception e){
-
+        } catch (Exception e) {
+            // Empty
         }
-        //Системная кнопка - конец
     }
 }

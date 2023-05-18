@@ -2,7 +2,6 @@ package space.iglebov.maketomorrowbetter;
 
 import android.content.Intent;
 import android.content.SharedPreferences;
-import android.media.Image;
 import android.os.Bundle;
 import android.os.Handler;
 import android.view.View;
@@ -10,7 +9,6 @@ import android.view.Window;
 import android.view.WindowManager;
 import android.widget.Button;
 import android.widget.CheckedTextView;
-import android.widget.ImageSwitcher;
 import android.widget.ImageView;
 
 import androidx.appcompat.app.AppCompatActivity;
@@ -29,7 +27,7 @@ public class SeventhStageActivity extends AppCompatActivity {
         SharedPreferences save = getSharedPreferences("Save", MODE_PRIVATE);
         SharedPreferences.Editor editor = save.edit();
         editor.putInt("Level", 6);
-        editor.commit();
+        editor.apply();
 
         // Save(end)
 
@@ -157,7 +155,7 @@ public class SeventhStageActivity extends AppCompatActivity {
         checkedTextView.setOnClickListener(new View.OnClickListener(){
             private int a = 0;
             private int n = 0;
-            private String[] seasons = {"Помедитировать", "Поставить себе цель в жизни", " "};
+            private final String[] seasons = {"Помедитировать", "Поставить себе цель в жизни", " "};
             @Override
             public void onClick(View v) {
                 checkedTextView.toggle();
@@ -167,88 +165,67 @@ public class SeventhStageActivity extends AppCompatActivity {
                     checkedTextView.setText(seasons[n]);
                     n++;
                     a++;
-                    if (a == 1){
-                        DontGiveUp.setVisibility(View.VISIBLE);
-                        new Handler().postDelayed(new Runnable() {
-                            @Override
-                            public void run() {
+                    switch(a) {
+                        case 1:
+                            DontGiveUp.setVisibility(View.VISIBLE);
+                            new Handler().postDelayed(() -> {
                                 DontGiveUp.setVisibility(View.INVISIBLE);
                                 Communication.setVisibility(View.VISIBLE);
-                            }
-                        },2 * 1000);
-                        Communication.setVisibility(View.VISIBLE);
-                        new Handler().postDelayed(new Runnable() {
-                            @Override
-                            public void run() {
+                            },2 * 1000);
+                            Communication.setVisibility(View.VISIBLE);
+                            new Handler().postDelayed(() -> {
                                 Communication.setVisibility(View.INVISIBLE);
                                 checkedTextView.setVisibility(View.VISIBLE);
-                            }
-                        },6 * 1000);
-                    }
-                    if (a == 2){
-                        Meditation.setVisibility(View.VISIBLE);
-                        new Handler().postDelayed(new Runnable() {
-                            @Override
-                            public void run() {
+                            },6 * 1000);
+                            break;
+                        case 2:
+                            Meditation.setVisibility(View.VISIBLE);
+                            new Handler().postDelayed(() -> {
                                 Meditation.setVisibility(View.INVISIBLE);
                                 checkedTextView.setVisibility(View.VISIBLE);
-                            }
-                        },7 * 1000);
-                    }
-                    if (a == 3){
-                        Goal.setVisibility(View.VISIBLE);
-                        new Handler().postDelayed(new Runnable() {
-                            @Override
-                            public void run() {
+                            },7 * 1000);
+                            break;
+                        case 3:
+                            Goal.setVisibility(View.VISIBLE);
+                            new Handler().postDelayed(() -> {
                                 Goal.setVisibility(View.INVISIBLE);
                                 DerevoViroslo.setVisibility(View.VISIBLE);
-                                new Handler().postDelayed(new Runnable() {
-                                    @Override
-                                    public void run() {
-                                        DerevoViroslo.setVisibility(View.INVISIBLE);
-                                        try{
-                                            Intent intent = new Intent(SeventhStageActivity.this, TheFinalActivity.class);
-                                            startActivity(intent);finish();
-                                            overridePendingTransition(0,0);
-                                        }catch (Exception e){
-
-                                        }
+                                new Handler().postDelayed(() -> {
+                                    DerevoViroslo.setVisibility(View.INVISIBLE);
+                                    try {
+                                        Intent intent = new Intent(SeventhStageActivity.this, TheFinalActivity.class);
+                                        startActivity(intent);finish();
+                                        overridePendingTransition(0,0);
+                                    } catch (Exception e) {
+                                        // Empty
                                     }
                                 },2 * 1000);
-                            }
-                        },5 * 1000);
-                        Tree7.setVisibility(View.INVISIBLE);
-                        Tree8.setVisibility(View.VISIBLE);
+                            },5 * 1000);
+                            Tree7.setVisibility(View.INVISIBLE);
+                            Tree8.setVisibility(View.VISIBLE);
+                            break;
                     }
                 }
             }
-
         });
         Button button_back = (Button)findViewById(R.id.button_back);
-        button_back.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-
-                try{
-                    Intent intent = new Intent(SeventhStageActivity.this, MainActivity.class);
-                    startActivity(intent);finish();
-                    overridePendingTransition(0,0);
-                }catch (Exception e){
-
-                }
+        button_back.setOnClickListener(v -> {
+            try {
+                Intent intent = new Intent(SeventhStageActivity.this, MainActivity.class);
+                startActivity(intent);finish();
+                overridePendingTransition(0,0);
+            } catch (Exception e) {
+                // Empty
             }
         });
-
     }
-    //Системная кнопка - начало
     @Override
     public void onBackPressed(){
-        try{
+        try {
             Intent intent = new Intent(SeventhStageActivity.this, MainActivity.class);
             startActivity(intent);finish();
-        }catch (Exception e){
-
+        } catch (Exception e) {
+            // Empty
         }
-        //Системная кнопка - конец
     }
 }

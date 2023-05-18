@@ -28,7 +28,7 @@ public class TheFinalActivity extends AppCompatActivity {
         SharedPreferences save = getSharedPreferences("Save", MODE_PRIVATE);
         SharedPreferences.Editor editor = save.edit();
         editor.putInt("Level", 7);
-        editor.commit();
+        editor.apply();
 
         // Save(end)
 
@@ -153,64 +153,42 @@ public class TheFinalActivity extends AppCompatActivity {
         TextWelcome.setVisibility(View.INVISIBLE);
         checkedTextView.setVisibility(View.INVISIBLE);
         Thank_you_1.setVisibility(View.VISIBLE);
-        new Handler().postDelayed(new Runnable() {
-            @Override
-            public void run() {
-                Thank_you_1.setVisibility(View.INVISIBLE);
-                Thank_you_2.setVisibility(View.VISIBLE);
-                new Handler().postDelayed(new Runnable() {
-                    @Override
-                    public void run() {
-                        Thank_you_2.setVisibility(View.INVISIBLE);
-                        Thank_you_3.setVisibility(View.VISIBLE);
-                        new Handler().postDelayed(new Runnable() {
-                            @Override
-                            public void run() {
-                                Thank_you_3.setVisibility(View.INVISIBLE);
-                                Thank_you_4.setVisibility(View.VISIBLE);
-                                new Handler().postDelayed(new Runnable() {
-                                    @Override
-                                    public void run() {
-                                        Thank_you_4.setVisibility(View.INVISIBLE);
-                                        Thank_you_5.setVisibility(View.VISIBLE);
-                                        new Handler().postDelayed(new Runnable() {
-                                            @Override
-                                            public void run() {
-                                                Thank_you_5.setVisibility(View.INVISIBLE);
-                                            }
-                                        },7 * 1000);
-                                    }
-                                },7 * 1000);
-                            }
-                        },7 * 1000);
-                    }
+        new Handler().postDelayed(() -> {
+            Thank_you_1.setVisibility(View.INVISIBLE);
+            Thank_you_2.setVisibility(View.VISIBLE);
+            new Handler().postDelayed(() -> {
+                Thank_you_2.setVisibility(View.INVISIBLE);
+                Thank_you_3.setVisibility(View.VISIBLE);
+                new Handler().postDelayed(() -> {
+                    Thank_you_3.setVisibility(View.INVISIBLE);
+                    Thank_you_4.setVisibility(View.VISIBLE);
+                    new Handler().postDelayed(() -> {
+                        Thank_you_4.setVisibility(View.INVISIBLE);
+                        Thank_you_5.setVisibility(View.VISIBLE);
+                        new Handler().postDelayed(() -> Thank_you_5.setVisibility(View.INVISIBLE),7 * 1000);
+                    },7 * 1000);
                 },7 * 1000);
-            }
+            },7 * 1000);
         },7 * 1000);
-        button_end.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                try{
-                    Intent intent = new Intent(TheFinalActivity.this, MainActivity.class);
-                    startActivity(intent);finish();
-                    overridePendingTransition(0,0);
-                }catch (Exception e){
-
-                }
+        button_end.setOnClickListener(v -> {
+            try {
+                Intent intent = new Intent(TheFinalActivity.this, MainActivity.class);
+                startActivity(intent);finish();
+                overridePendingTransition(0,0);
+            } catch (Exception e) {
+                // Empty
             }
         });
         Button button_back = (Button)findViewById(R.id.button_back);
         button_back.setVisibility(View.INVISIBLE);
     }
-    //Системная кнопка - начало
     @Override
     public void onBackPressed(){
-        try{
+        try {
             Intent intent = new Intent(TheFinalActivity.this, MainActivity.class);
             startActivity(intent);finish();
-        }catch (Exception e){
-
+        } catch (Exception e) {
+            // Empty
         }
-        //Системная кнопка - конец
     }
 }

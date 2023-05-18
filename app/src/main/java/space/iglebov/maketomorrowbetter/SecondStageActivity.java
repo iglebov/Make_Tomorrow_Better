@@ -10,7 +10,6 @@ import android.view.WindowManager;
 import android.widget.Button;
 import android.widget.CheckedTextView;
 import android.widget.ImageView;
-import android.widget.ImageSwitcher;
 
 import androidx.appcompat.app.AppCompatActivity;
 
@@ -28,7 +27,7 @@ public class SecondStageActivity extends AppCompatActivity {
         SharedPreferences save = getSharedPreferences("Save", MODE_PRIVATE);
         SharedPreferences.Editor editor = save.edit();
         editor.putInt("Level", 1);
-        editor.commit();
+        editor.apply();
 
         // Save(end)
 
@@ -157,7 +156,7 @@ public class SecondStageActivity extends AppCompatActivity {
         checkedTextView.setOnClickListener(new View.OnClickListener(){
             private int a = 0;
             private int n = 0;
-            private String[] seasons = {"Прогуляться на природе", "Посмотреть фильм", "Покушать"};
+            private final String[] seasons = {"Прогуляться на природе", "Посмотреть фильм", "Покушать"};
             @Override
             public void onClick(View v) {
                 checkedTextView.toggle();
@@ -167,88 +166,65 @@ public class SecondStageActivity extends AppCompatActivity {
                     checkedTextView.setText(seasons[n]);
                     n++;
                     a++;
-                    if (a == 1){
-                        Xorosho.setVisibility(View.VISIBLE);
-                        new Handler().postDelayed(new Runnable() {
-                            @Override
-                            public void run() {
-                                Xorosho.setVisibility(View.INVISIBLE);
-                            }
-                        },2 * 1000);
-                        BookReading.setVisibility(View.VISIBLE);
-                        new Handler().postDelayed(new Runnable() {
-                            @Override
-                            public void run() {
+                    switch(a) {
+                        case 1:
+                            Xorosho.setVisibility(View.VISIBLE);
+                            new Handler().postDelayed(() -> Xorosho.setVisibility(View.INVISIBLE),2 * 1000);
+                            BookReading.setVisibility(View.VISIBLE);
+                            new Handler().postDelayed(() -> {
                                 BookReading.setVisibility(View.INVISIBLE);
                                 checkedTextView.setVisibility(View.VISIBLE);
-                            }
-                        },8 * 1000);
-                    }
-                    if (a == 2){
-                        Walk.setVisibility(View.VISIBLE);
-                        new Handler().postDelayed(new Runnable() {
-                            @Override
-                            public void run() {
+                            },8 * 1000);
+                            break;
+                        case 2:
+                            Walk.setVisibility(View.VISIBLE);
+                            new Handler().postDelayed(() -> {
                                 Walk.setVisibility(View.INVISIBLE);
                                 checkedTextView.setVisibility(View.VISIBLE);
-                            }
-                        },7 * 1000);
-                    }
-                    if (a == 3){
-                        Otlichno.setVisibility(View.VISIBLE);
-                        new Handler().postDelayed(new Runnable() {
-                            @Override
-                            public void run() {
+                            },7 * 1000);
+                            break;
+                        case 3:
+                            Otlichno.setVisibility(View.VISIBLE);
+                            new Handler().postDelayed(() -> {
                                 Otlichno.setVisibility(View.INVISIBLE);
                                 FilmWatching.setVisibility(View.VISIBLE);
-                                new Handler().postDelayed(new Runnable() {
-                                    @Override
-                                    public void run() {
-                                        FilmWatching.setVisibility(View.INVISIBLE);
-                                        checkedTextView.setVisibility(View.VISIBLE);
-                                        try{
-                                            Intent intent = new Intent(SecondStageActivity.this, ThirdStageActivity.class);
-                                            startActivity(intent);finish();
-                                            overridePendingTransition(0,0);
-                                        }catch (Exception e){
-
-                                        }
+                                new Handler().postDelayed(() -> {
+                                    FilmWatching.setVisibility(View.INVISIBLE);
+                                    checkedTextView.setVisibility(View.VISIBLE);
+                                    try{
+                                        Intent intent = new Intent(SecondStageActivity.this, ThirdStageActivity.class);
+                                        startActivity(intent);finish();
+                                        overridePendingTransition(0,0);
+                                    } catch (Exception e) {
+                                        // Empty
                                     }
                                 },6 * 1000);
-                            }
-                        },2 * 1000);
-                        Tree2.setVisibility(View.INVISIBLE);
-                        Tree3.setVisibility(View.VISIBLE);
+                            },2 * 1000);
+                            Tree2.setVisibility(View.INVISIBLE);
+                            Tree3.setVisibility(View.VISIBLE);
+                            break;
                     }
                 }
             }
-
         });
         Button button_back = (Button)findViewById(R.id.button_back);
-        button_back.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-
-                try{
-                    Intent intent = new Intent(SecondStageActivity.this, MainActivity.class);
-                    startActivity(intent);finish();
-                    overridePendingTransition(0,0);
-                }catch (Exception e){
-
-                }
+        button_back.setOnClickListener(v -> {
+            try {
+                Intent intent = new Intent(SecondStageActivity.this, MainActivity.class);
+                startActivity(intent);finish();
+                overridePendingTransition(0,0);
+            } catch (Exception e) {
+                // Empty
             }
         });
-
     }
-    //Системная кнопка - начало
     @Override
     public void onBackPressed(){
-        try{
+        try {
             Intent intent = new Intent(SecondStageActivity.this, MainActivity.class);
             startActivity(intent);finish();
-        }catch (Exception e){
-
+        } catch (Exception e) {
+            // Empty
         }
-        //Системная кнопка - конец
     }
 }

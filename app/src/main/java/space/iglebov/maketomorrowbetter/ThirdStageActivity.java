@@ -4,14 +4,12 @@ import android.content.Intent;
 import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.os.Handler;
-import android.util.Half;
 import android.view.View;
 import android.view.Window;
 import android.view.WindowManager;
 import android.widget.Button;
 import android.widget.CheckedTextView;
 import android.widget.ImageView;
-import android.widget.ImageSwitcher;
 
 import androidx.appcompat.app.AppCompatActivity;
 
@@ -29,7 +27,7 @@ public class ThirdStageActivity extends AppCompatActivity {
         SharedPreferences save = getSharedPreferences("Save", MODE_PRIVATE);
         SharedPreferences.Editor editor = save.edit();
         editor.putInt("Level", 2);
-        editor.commit();
+        editor.apply();
 
         // Save(end)
 
@@ -157,7 +155,7 @@ public class ThirdStageActivity extends AppCompatActivity {
         checkedTextView.setOnClickListener(new View.OnClickListener(){
             private int a = 0;
             private int n = 0;
-            private String[] seasons = {"Отдохнуть(ничего не делать)", "Попробовать экономить воду", "Потанцевать"};
+            private final String[] seasons = {"Отдохнуть(ничего не делать)", "Попробовать экономить воду", "Потанцевать"};
             @Override
             public void onClick(View v) {
                 checkedTextView.toggle();
@@ -167,88 +165,65 @@ public class ThirdStageActivity extends AppCompatActivity {
                     checkedTextView.setText(seasons[n]);
                     n++;
                     a++;
-                    if (a == 1){
-                        SuperKartinka.setVisibility(View.VISIBLE);
-                        new Handler().postDelayed(new Runnable() {
-                            @Override
-                            public void run() {
-                                SuperKartinka.setVisibility(View.INVISIBLE);
-                            }
-                        },2 * 1000);
-                        Food.setVisibility(View.VISIBLE);
-                        new Handler().postDelayed(new Runnable() {
-                            @Override
-                            public void run() {
+                    switch(a) {
+                        case 1:
+                            SuperKartinka.setVisibility(View.VISIBLE);
+                            new Handler().postDelayed(() -> SuperKartinka.setVisibility(View.INVISIBLE),2 * 1000);
+                            Food.setVisibility(View.VISIBLE);
+                            new Handler().postDelayed(() -> {
                                 Food.setVisibility(View.INVISIBLE);
                                 checkedTextView.setVisibility(View.VISIBLE);
-                            }
-                        },8 * 1000);
-                    }
-                    if (a == 2){
-                       Otdix.setVisibility(View.VISIBLE);
-                        new Handler().postDelayed(new Runnable() {
-                            @Override
-                            public void run() {
+                            },8 * 1000);
+                            break;
+                        case 2:
+                            Otdix.setVisibility(View.VISIBLE);
+                            new Handler().postDelayed(() -> {
                                 Otdix.setVisibility(View.INVISIBLE);
                                 checkedTextView.setVisibility(View.VISIBLE);
-                            }
-                        },7 * 1000);
-                    }
-                    if (a == 3){
-                        EkonomitVodu.setVisibility(View.VISIBLE);
-                        new Handler().postDelayed(new Runnable() {
-                            @Override
-                            public void run() {
+                            },7 * 1000);
+                            break;
+                        case 3:
+                            EkonomitVodu.setVisibility(View.VISIBLE);
+                            new Handler().postDelayed(() -> {
                                 EkonomitVodu.setVisibility(View.INVISIBLE);
                                 HalfWay.setVisibility(View.VISIBLE);
-                                new Handler().postDelayed(new Runnable() {
-                                    @Override
-                                    public void run() {
-                                        HalfWay.setVisibility(View.INVISIBLE);
-                                        checkedTextView.setVisibility(View.VISIBLE);
-                                        try{
-                                            Intent intent = new Intent(ThirdStageActivity.this, FourthStageActivity.class);
-                                            startActivity(intent);finish();
-                                            overridePendingTransition(0,0);
-                                        }catch (Exception e){
-
-                                        }
+                                new Handler().postDelayed(() -> {
+                                    HalfWay.setVisibility(View.INVISIBLE);
+                                    checkedTextView.setVisibility(View.VISIBLE);
+                                    try {
+                                        Intent intent = new Intent(ThirdStageActivity.this, FourthStageActivity.class);
+                                        startActivity(intent);finish();
+                                        overridePendingTransition(0,0);
+                                    } catch (Exception e) {
+                                        // Empty
                                     }
                                 },3 * 1000);
-                            }
-                        },5 * 1000);
-                        Tree3.setVisibility(View.INVISIBLE);
-                        Tree4.setVisibility(View.VISIBLE);
+                            },5 * 1000);
+                            Tree3.setVisibility(View.INVISIBLE);
+                            Tree4.setVisibility(View.VISIBLE);
                     }
                 }
             }
 
         });
         Button button_back = (Button)findViewById(R.id.button_back);
-        button_back.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-
-                try{
-                    Intent intent = new Intent(ThirdStageActivity.this, MainActivity.class);
-                    startActivity(intent);finish();
-                    overridePendingTransition(0,0);
-                }catch (Exception e){
-
-                }
+        button_back.setOnClickListener(v -> {
+            try {
+                Intent intent = new Intent(ThirdStageActivity.this, MainActivity.class);
+                startActivity(intent);finish();
+                overridePendingTransition(0,0);
+            } catch(Exception e) {
+                // Empty
             }
         });
-
     }
-    //Системная кнопка - начало
     @Override
     public void onBackPressed(){
-        try{
+        try {
             Intent intent = new Intent(ThirdStageActivity.this, MainActivity.class);
             startActivity(intent);finish();
-        }catch (Exception e){
-
+        } catch(Exception e) {
+            // Empty
         }
-        //Системная кнопка - конец
     }
 }

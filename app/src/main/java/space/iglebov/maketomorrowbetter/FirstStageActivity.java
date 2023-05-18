@@ -1,7 +1,6 @@
 package space.iglebov.maketomorrowbetter;
 
 import android.content.Intent;
-import android.media.Image;
 import android.os.Bundle;
 import android.os.Handler;
 import android.view.View;
@@ -10,7 +9,6 @@ import android.view.WindowManager;
 import android.widget.Button;
 import android.widget.CheckedTextView;
 import android.widget.ImageView;
-import android.widget.ImageSwitcher;
 
 import androidx.appcompat.app.AppCompatActivity;
 
@@ -30,7 +28,7 @@ public class FirstStageActivity extends AppCompatActivity {
         SharedPreferences save = getSharedPreferences("Save", MODE_PRIVATE);
         SharedPreferences.Editor editor = save.edit();
         editor.putInt("Level", 0);
-        editor.commit();
+        editor.apply();
 
         // Save(end)
 
@@ -161,24 +159,13 @@ public class FirstStageActivity extends AppCompatActivity {
         Tree_Growing_Up_First_Stage.setVisibility(View.INVISIBLE);
         Tree_Growing_Up_Second_Stage.setVisibility(View.INVISIBLE);
         TextWelcome.setVisibility(View.VISIBLE);
-        new Handler().postDelayed(new Runnable() {
-            @Override
-            public void run() {
-                TextWelcome.setVisibility(View.GONE);
-            }
-        },7 * 1000);
+        new Handler().postDelayed(() -> TextWelcome.setVisibility(View.GONE),7 * 1000);
         checkedTextView.setVisibility(View.INVISIBLE);
-        new Handler().postDelayed(new Runnable() {
-            @Override
-            public void run() {
-                checkedTextView.setVisibility(View.VISIBLE);
-            }
-        },7 * 1000);
+        new Handler().postDelayed(() -> checkedTextView.setVisibility(View.VISIBLE),7 * 1000);
         checkedTextView.setOnClickListener(new View.OnClickListener(){
-            private int[] images = {R.drawable.treesecondstage, R.drawable.tree_third_stage, R.drawable.tree_fourth_stage};
             private int a = 0;
             private int n = 0;
-            private String[] seasons = {"Послушать музыку", "Позаниматься спортом","Почитать книгу"};
+            private final String[] seasons = {"Послушать музыку", "Позаниматься спортом","Почитать книгу"};
             @Override
             public void onClick(View v) {
                 checkedTextView.toggle();
@@ -188,101 +175,70 @@ public class FirstStageActivity extends AppCompatActivity {
                     checkedTextView.setText(seasons[n]);
                     n++;
                     a++;
-
-                    // рост дерева
-
-                    if (a == 1){
-                        JobGood.setVisibility(View.VISIBLE);
-                        new Handler().postDelayed(new Runnable() {
-                            @Override
-                            public void run() {
-                                JobGood.setVisibility(View.INVISIBLE);
-                            }
-                        },3 * 1000);
-                        Task_Water.setVisibility(View.VISIBLE);
-                        new Handler().postDelayed(new Runnable() {
-                            @Override
-                            public void run() {
+                    switch(a) {
+                        case 1:
+                            JobGood.setVisibility(View.VISIBLE);
+                            new Handler().postDelayed(() -> JobGood.setVisibility(View.INVISIBLE),3 * 1000);
+                            Task_Water.setVisibility(View.VISIBLE);
+                            new Handler().postDelayed(() -> {
                                 Task_Water.setVisibility(View.INVISIBLE);
                                 checkedTextView.setVisibility(View.VISIBLE);
-                            }
-                        },8 * 1000);
-                    }
-                    if (a == 2){
-                        FlowerMusic.setVisibility(View.VISIBLE);
-                        new Handler().postDelayed(new Runnable() {
-                            @Override
-                            public void run() {
+                            },8 * 1000);
+                            break;
+                        case 2:
+                            FlowerMusic.setVisibility(View.VISIBLE);
+                            new Handler().postDelayed(() -> {
                                 FlowerMusic.setVisibility(View.INVISIBLE);
                                 checkedTextView.setVisibility(View.VISIBLE);
-                            }
-                        },5 * 1000);
-                    }
-                    if (a == 3){
-                        ActivitySport.setVisibility(View.VISIBLE);
-                        new Handler().postDelayed(new Runnable() {
-                            @Override
-                            public void run() {
+                            },5 * 1000);
+                            break;
+                        case 3:
+                            ActivitySport.setVisibility(View.VISIBLE);
+                            new Handler().postDelayed(() -> {
                                 ActivitySport.setVisibility(View.INVISIBLE);
                                 Tree_Growing_Up_First_Stage.setVisibility(View.VISIBLE);
-                                new Handler().postDelayed(new Runnable() {
-                                    @Override
-                                    public void run() {
-                                        Tree_Growing_Up_First_Stage.setVisibility(View.INVISIBLE);
-                                        ThreeTasks.setVisibility(View.VISIBLE);
-                                        new Handler().postDelayed(new Runnable() {
-                                            @Override
-                                            public void run() {
-                                                ThreeTasks.setVisibility(View.GONE);
-                                                checkedTextView.setVisibility(View.VISIBLE);
-                                                try{
-                                                    Intent intent = new Intent(FirstStageActivity.this, SecondStageActivity.class);
-                                                    startActivity(intent);finish();
-                                                    overridePendingTransition(0,0);
-                                                }catch (Exception e){
-
-                                                }
-                                            }
-                                        },4 * 1000);
-                                    }
+                                new Handler().postDelayed(() -> {
+                                    Tree_Growing_Up_First_Stage.setVisibility(View.INVISIBLE);
+                                    ThreeTasks.setVisibility(View.VISIBLE);
+                                    new Handler().postDelayed(() -> {
+                                        ThreeTasks.setVisibility(View.GONE);
+                                        checkedTextView.setVisibility(View.VISIBLE);
+                                        try {
+                                            Intent intent = new Intent(FirstStageActivity.this, SecondStageActivity.class);
+                                            startActivity(intent);finish();
+                                            overridePendingTransition(0,0);
+                                        } catch (Exception e) {
+                                            // Empty
+                                        }
+                                    },4 * 1000);
                                 },3 * 1000);
-                            }
-                        },4 * 1000);
-                        Tree1.setVisibility(View.INVISIBLE);
-                        Tree2.setVisibility(View.VISIBLE); // Изменение дерева при переходе с одного уровня на другой
-
+                            },4 * 1000);
+                            Tree1.setVisibility(View.INVISIBLE);
+                            // Изменение дерева при переходе с одного уровня на другой
+                            Tree2.setVisibility(View.VISIBLE);
+                            break;
                     }
-
-                    // рост дерева
-
                 }
             }
         });
         Button button_back = (Button)findViewById(R.id.button_back);
-        button_back.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-
-                try{
-                    Intent intent = new Intent(FirstStageActivity.this, MainActivity.class);
-                    startActivity(intent);finish();
-                    overridePendingTransition(0,0);
-                }catch (Exception e){
-
-                } // кнопка назад
+        button_back.setOnClickListener(v -> {
+            try {
+                Intent intent = new Intent(FirstStageActivity.this, MainActivity.class);
+                startActivity(intent);finish();
+                overridePendingTransition(0,0);
+            } catch(Exception e) {
+                // Empty
             }
         });
-
     }
-    //Системная кнопка - начало
     @Override
     public void onBackPressed(){
-        try{
+        try {
             Intent intent = new Intent(FirstStageActivity.this, MainActivity.class);
             startActivity(intent);finish();
-        }catch (Exception e){
-
+        } catch(Exception e) {
+            // Empty
         }
-        //Системная кнопка - конец
     }
 }
