@@ -9,7 +9,8 @@
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
         <activity android:name=".MainActivity"
-            android:screenOrientation="portrait">
+            android:screenOrientation="portrait"
+            android:exported="true">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
@@ -17,35 +18,40 @@
             </intent-filter>
         </activity>
         <activity android:name=".FirstStageActivity"
-            android:screenOrientation="portrait">
+            android:screenOrientation="portrait"
+            android:exported="true">
             <intent-filter>
 
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
         <activity android:name=".SecondStageActivity"
-            android:screenOrientation="portrait">
+            android:screenOrientation="portrait"
+            android:exported="true">
             <intent-filter>
 
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
         <activity android:name=".ThirdStageActivity"
-            android:screenOrientation="portrait">
+            android:screenOrientation="portrait"
+            android:exported="true">
             <intent-filter>
 
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
         <activity android:name=".FourthStageActivity"
-            android:screenOrientation="portrait">
+            android:screenOrientation="portrait"
+            android:exported="true">
             <intent-filter>
 
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
         <activity android:name=".FifthStageActivity"
-            android:screenOrientation="portrait">
+            android:screenOrientation="portrait"
+            android:exported="true">
             <intent-filter>
 
                 <category android:name="android.intent.category.LAUNCHER" />
@@ -53,7 +59,8 @@
         </activity>
         <activity android:name=".SixthStageActivity"
             android:screenOrientation="portrait"
-            android:hardwareAccelerated="false">
+            android:hardwareAccelerated="false"
+            android:exported="true">
             <intent-filter>
 
                 <category android:name="android.intent.category.LAUNCHER" />
@@ -61,7 +68,8 @@
         </activity>
         <activity android:name=".SeventhStageActivity"
             android:screenOrientation="portrait"
-            android:hardwareAccelerated="false">
+            android:hardwareAccelerated="false"
+            android:exported="true">
             <intent-filter>
 
                 <category android:name="android.intent.category.LAUNCHER" />
@@ -69,7 +77,8 @@
         </activity>
         <activity android:name=".TheFinalActivity"
             android:screenOrientation="portrait"
-            android:hardwareAccelerated="false">
+            android:hardwareAccelerated="false"
+            android:exported="true">
             <intent-filter>
 
                 <category android:name="android.intent.category.LAUNCHER" />
