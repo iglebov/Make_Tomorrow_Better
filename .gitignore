@@ -1,14 +1,21 @@
+# IDE
+.idea/
+
+# Build outputs
+build/
+*.apk
+*.aar
+*.jar
+
+# Gradle
+.gradle/
+
+# Local configuration
+local.properties
+
+# Generated files
 *.iml
-.gradle
-/local.properties
-/.idea/caches
-/.idea/libraries
-/.idea/modules.xml
-/.idea/workspace.xml
-/.idea/navEditor.xml
-/.idea/assetWizardSettings.xml
+
+# OS generated files
 .DS_Store
-/build
-/captures
-.externalNativeBuild
-.cxx
+Thumbs.db
