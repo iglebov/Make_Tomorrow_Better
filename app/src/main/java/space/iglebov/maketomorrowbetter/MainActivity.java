@@ -24,7 +24,7 @@ public class MainActivity extends AppCompatActivity {
         SharedPreferences save = getSharedPreferences("Save", MODE_PRIVATE);
         final int level = save.getInt("Level", 0);
 
-        Button button_start = (Button)findViewById(R.id.button_start);
+        Button button_start = findViewById(R.id.button_start);
         button_start.setOnClickListener(v -> {
             try {
                 Intent intent = new Intent(MainActivity.this, FirstStageActivity.class);
@@ -36,7 +36,7 @@ public class MainActivity extends AppCompatActivity {
             }
         });
 
-        Button button_continue = (Button)findViewById(R.id.button_continue);
+        Button button_continue = findViewById(R.id.button_continue);
         button_continue.setOnClickListener(v -> {
             switch(level) {
                 case 0:
@@ -111,7 +111,7 @@ public class MainActivity extends AppCompatActivity {
                     break;
             }
         });
-        Button button_newgame = (Button)findViewById(R.id.button_newgame);
+        Button button_newgame = findViewById(R.id.button_newgame);
         button_newgame.setOnClickListener(v -> {
             try {
                 SharedPreferences save1 = getSharedPreferences("Save", MODE_PRIVATE);

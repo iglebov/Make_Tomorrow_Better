@@ -102,7 +102,7 @@ public class SixthStageActivity extends AppCompatActivity {
         // Credits(end)
 
         ThreeTasks.setVisibility(View.GONE);
-        Button button_end = (Button)findViewById(R.id.button_end);
+        Button button_end = findViewById(R.id.button_end);
         button_end.setVisibility(View.INVISIBLE);
         Xorosho.setVisibility(View.INVISIBLE);
         SuperKartinka.setVisibility(View.INVISIBLE);
@@ -154,8 +154,8 @@ public class SixthStageActivity extends AppCompatActivity {
         checkedTextView.setVisibility(View.VISIBLE);
         checkedTextView.setText("Сделать утреннюю зарядку");
         checkedTextView.setOnClickListener(new View.OnClickListener(){
-            private int a = 0;
-            private int n = 0;
+            private int i = 0;
+            
             private final String[] seasons = {"Убраться в комнате", "Помечтать", "Познакомиться с кем-нибудь"};
             @Override
             public void onClick(View v) {
@@ -163,10 +163,10 @@ public class SixthStageActivity extends AppCompatActivity {
                 if(checkedTextView.isChecked()) {
                     checkedTextView.setChecked(false);
                     checkedTextView.setVisibility(View.INVISIBLE);
-                    checkedTextView.setText(seasons[n]);
-                    n++;
-                    a++;
-                    switch(a) {
+                    checkedTextView.setText(seasons[i]);
+                    i++;
+                    i++;
+                    switch(i) {
                         case 1:
                             DerjatTak.setVisibility(View.VISIBLE);
                             new Handler().postDelayed(() -> DerjatTak.setVisibility(View.INVISIBLE),2 * 1000);
@@ -207,7 +207,7 @@ public class SixthStageActivity extends AppCompatActivity {
                 }
             }
         });
-        Button button_back = (Button)findViewById(R.id.button_back);
+        Button button_back = findViewById(R.id.button_back);
         button_back.setOnClickListener(v -> {
             try {
                 Intent intent = new Intent(SixthStageActivity.this, MainActivity.class);

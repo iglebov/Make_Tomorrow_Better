@@ -9,7 +9,6 @@ import android.view.Window;
 import android.view.WindowManager;
 import android.widget.Button;
 import android.widget.CheckedTextView;
-import android.widget.ImageSwitcher;
 import android.widget.ImageView;
 
 import androidx.appcompat.app.AppCompatActivity;
@@ -103,7 +102,7 @@ public class TheFinalActivity extends AppCompatActivity {
         // Credits(end)
 
         ThreeTasks.setVisibility(View.GONE);
-        Button button_end = (Button)findViewById(R.id.button_end);
+        Button button_end = findViewById(R.id.button_end);
         button_end.setVisibility(View.VISIBLE);
         Xorosho.setVisibility(View.INVISIBLE);
         SuperKartinka.setVisibility(View.INVISIBLE);
@@ -179,7 +178,7 @@ public class TheFinalActivity extends AppCompatActivity {
                 // Empty
             }
         });
-        Button button_back = (Button)findViewById(R.id.button_back);
+        Button button_back = findViewById(R.id.button_back);
         button_back.setVisibility(View.INVISIBLE);
     }
     @Override

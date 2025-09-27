@@ -104,7 +104,7 @@ public class ThirdStageActivity extends AppCompatActivity {
         // Credits(end)
 
         ThreeTasks.setVisibility(View.GONE);
-        Button button_end = (Button)findViewById(R.id.button_end);
+        Button button_end = findViewById(R.id.button_end);
         button_end.setVisibility(View.INVISIBLE);
         Xorosho.setVisibility(View.INVISIBLE);
         SuperKartinka.setVisibility(View.INVISIBLE);
@@ -153,8 +153,8 @@ public class ThirdStageActivity extends AppCompatActivity {
         checkedTextView.setVisibility(View.VISIBLE);
         checkedTextView.setText("Покушать");
         checkedTextView.setOnClickListener(new View.OnClickListener(){
-            private int a = 0;
-            private int n = 0;
+            private int i = 0;
+            
             private final String[] seasons = {"Отдохнуть(ничего не делать)", "Попробовать экономить воду", "Потанцевать"};
             @Override
             public void onClick(View v) {
@@ -162,10 +162,10 @@ public class ThirdStageActivity extends AppCompatActivity {
                 if(checkedTextView.isChecked()) {
                     checkedTextView.setChecked(false);
                     checkedTextView.setVisibility(View.INVISIBLE);
-                    checkedTextView.setText(seasons[n]);
-                    n++;
-                    a++;
-                    switch(a) {
+                    checkedTextView.setText(seasons[i]);
+                    i++;
+                    i++;
+                    switch(i) {
                         case 1:
                             SuperKartinka.setVisibility(View.VISIBLE);
                             new Handler().postDelayed(() -> SuperKartinka.setVisibility(View.INVISIBLE),2 * 1000);
@@ -206,7 +206,7 @@ public class ThirdStageActivity extends AppCompatActivity {
             }
 
         });
-        Button button_back = (Button)findViewById(R.id.button_back);
+        Button button_back = findViewById(R.id.button_back);
         button_back.setOnClickListener(v -> {
             try {
                 Intent intent = new Intent(ThirdStageActivity.this, MainActivity.class);

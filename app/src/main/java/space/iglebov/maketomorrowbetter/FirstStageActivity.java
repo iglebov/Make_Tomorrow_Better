@@ -96,7 +96,7 @@ public class FirstStageActivity extends AppCompatActivity {
         final ImageView DontGiveUp = findViewById(R.id.DontGiveUp);
         final ImageView DerevoViroslo = findViewById(R.id.DerevoViroslo);
 
-        Button button_end = (Button)findViewById(R.id.button_end);
+        Button button_end = findViewById(R.id.button_end);
         button_end.setVisibility(View.INVISIBLE);
 
         DerevoViroslo.setVisibility(View.INVISIBLE);
@@ -163,8 +163,7 @@ public class FirstStageActivity extends AppCompatActivity {
         checkedTextView.setVisibility(View.INVISIBLE);
         new Handler().postDelayed(() -> checkedTextView.setVisibility(View.VISIBLE),7 * 1000);
         checkedTextView.setOnClickListener(new View.OnClickListener(){
-            private int a = 0;
-            private int n = 0;
+            private int i = 0;
             private final String[] seasons = {"Послушать музыку", "Позаниматься спортом","Почитать книгу"};
             @Override
             public void onClick(View v) {
@@ -172,10 +171,9 @@ public class FirstStageActivity extends AppCompatActivity {
                 if(checkedTextView.isChecked()) {
                     checkedTextView.setChecked(false);
                     checkedTextView.setVisibility(View.INVISIBLE);
-                    checkedTextView.setText(seasons[n]);
-                    n++;
-                    a++;
-                    switch(a) {
+                    checkedTextView.setText(seasons[i]);
+                    i++;
+                    switch(i) {
                         case 1:
                             JobGood.setVisibility(View.VISIBLE);
                             new Handler().postDelayed(() -> JobGood.setVisibility(View.INVISIBLE),3 * 1000);
@@ -221,7 +219,7 @@ public class FirstStageActivity extends AppCompatActivity {
                 }
             }
         });
-        Button button_back = (Button)findViewById(R.id.button_back);
+        Button button_back = findViewById(R.id.button_back);
         button_back.setOnClickListener(v -> {
             try {
                 Intent intent = new Intent(FirstStageActivity.this, MainActivity.class);
