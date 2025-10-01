@@ -91,10 +91,10 @@ public class MainActivity extends AppCompatActivity {
                     break;
                 case 5:
                     try {
-                            Intent intent = new Intent(MainActivity.this, SixthStageActivity.class);
-                            startActivity(intent);
-                            overridePendingTransition(0,0);
-                            finish();
+                        Intent intent = new Intent(MainActivity.this, SixthStageActivity.class);
+                        startActivity(intent);
+                        overridePendingTransition(0,0);
+                        finish();
                     } catch (Exception e) {
                         // Empty
                     }

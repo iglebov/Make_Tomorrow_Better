@@ -164,7 +164,6 @@ public class SeventhStageActivity extends AppCompatActivity {
                     checkedTextView.setVisibility(View.INVISIBLE);
                     checkedTextView.setText(seasons[i]);
                     i++;
-                    i++;
                     switch(i) {
                         case 1:
                             DontGiveUp.setVisibility(View.VISIBLE);

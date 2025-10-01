@@ -164,7 +164,6 @@ public class FourthStageActivity extends AppCompatActivity {
                     checkedTextView.setVisibility(View.INVISIBLE);
                     checkedTextView.setText(seasons[i]);
                     i++;
-                    i++;
                     switch(i) {
                         case 1:
                             Otlichno.setVisibility(View.VISIBLE);
